@@ -1,13 +1,13 @@
 from collections import defaultdict
 
 
-def Anagrams(arr):
-    grpWords = defaultdict(list)
+def Anagrams(words):
+    duplicateList = defaultdict(list)
 
-    for word in arr:
-        grpWords["".join(sorted(word))].append(word)
+    for word in words:
+        duplicateList["".join(sorted(word))].append(word)
 
-    for group in grpWords.values():
+    for group in duplicateList.values():
         print(" ".join(group))
 
 
