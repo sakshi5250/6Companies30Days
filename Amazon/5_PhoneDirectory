@@ -1,0 +1,42 @@
+
+def displayContacts(n, contact, s):
+    # code here
+    d = dict()
+    contact = sorted(contact)
+    for i in range(len(contact)):
+        a = contact[i]
+        p = 0
+        q = 0
+        while p < len(a) and q < len(s) and a[p] == s[q]:
+            p += 1
+            q += 1
+        d[a] = p
+        # print(d)
+    ans = []
+    c = len(s)
+    while c:
+        c -= 1
+        ans.append([0])
+        # print(ans)
+    for i in range(len(contact)):
+        val = d[contact[i]]
+        v = 0
+        while v < val:
+            if ans[v][0] == 0:
+                ans[v].pop(0)
+                #   pass
+            if contact[i] not in ans[v]:
+                ans[v].append(contact[i])
+            v += 1
+
+    return ans
+
+
+n = 3
+contact = ["PQR", "XYZ", "ABC", "ABZS"]
+s = "ABCD"
+ans = displayContacts(n, contact, s)
+for i in range(len(s)):
+    for val in ans[i]:
+        print(val, end=" ")
+    print()
